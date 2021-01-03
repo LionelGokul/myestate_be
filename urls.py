@@ -1,4 +1,4 @@
-from Controllers.Home import index
+from Controllers.Home import index, sample
 from Controllers.User import validateUser, createUser, updateUser
 from Controllers.property import insertProperty, getPropertiesCreatedByUser, getPropertyDetails, updateProperty
 from Controllers.Wishlist import addToWishlist, removeFromWishlist, getWishlistByUserId
@@ -6,6 +6,7 @@ from Controllers.Wishlist import addToWishlist, removeFromWishlist, getWishlistB
 
 def configure_URL(app):
     app.add_url_rule('/index', view_func=index, methods=['GET', 'POST'])
+    app.add_url_rule('/sample', view_func=sample, methods=['GET', 'POST'])
     app.add_url_rule('/users/login', view_func=validateUser, methods=['POST'])
     app.add_url_rule('/users', view_func=createUser, methods=['POST'])
     app.add_url_rule('/users/update', view_func=updateUser, methods=['POST'])
