@@ -10,8 +10,6 @@ app.config[
     'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://hhwkd7s7t69nfydq:y2wojvhvzu1f3e3z@l0ebsc9jituxzmts.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/uvx1dgkqm0ohu0hm'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['CORS_HEADERS'] = 'Content-Type'
-app.config['aws_access_key_id'] = 'AKIAI65DIV5RWERXPVLA'
-app.config['aws_secret_access_key'] = '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'
 
 
 # Cross Origin Resource Sharing
