@@ -6,6 +6,7 @@ from Controllers.Wishlist import addToWishlist, removeFromWishlist, getWishlistB
 
 def configure_URL(app):
     app.add_url_rule('/index', view_func=index, methods=['GET', 'POST'])
+    app.add_url_rule('/sample', view_func=sample, methods=['GET', 'POST'])
     app.add_url_rule('/sample1', view_func=sample, methods=['GET', 'POST'])
     app.add_url_rule('/sample2', view_func=sample, methods=['GET', 'POST'])
     app.add_url_rule('/users/login', view_func=validateUser, methods=['POST'])
