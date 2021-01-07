@@ -159,3 +159,7 @@ def getPropertyDetailsById(id):
 
 def getCreatedBy(propertyId):
     return Properties.query.filter_by(id=propertyId, isActive=True, isDeleted=False).first().createdBy
+
+def getPropertyDetailsByQuery(query):
+    properties = Properties.query.filter((Properties.city.ilike(f"{query}%")) |(Properties.pincode.ilike(f"{query}%")) | (Properties.locality.ilike(f"{query}%")) )
+    return [property.serialize for property in properties]
