@@ -1,6 +1,6 @@
 from Controllers.Home import index, sample
 from Controllers.User import validateUser, createUser, updateUser
-from Controllers.property import insertProperty, getPropertiesCreatedByUser, getPropertyDetails, updateProperty,getProperties
+from Controllers.property import insertProperty, getPropertiesCreatedByUser, getPropertyDetails, updateProperty,getProperties,getPropertiesByType
 from Controllers.Wishlist import addToWishlist, removeFromWishlist, getWishlistByUserId
 
 
@@ -20,3 +20,4 @@ def configure_URL(app):
     app.add_url_rule('/my-wishlist', view_func=getWishlistByUserId, methods=['POST'])
     app.add_url_rule('/my-properties', view_func=getPropertiesCreatedByUser, methods=['POST'])
     app.add_url_rule('/search/<query>', view_func=getProperties, methods=['GET'])
+    app.add_url_rule('/properties/<type>', view_func=getPropertiesByType, methods=['GET'])
