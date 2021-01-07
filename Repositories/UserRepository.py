@@ -1,6 +1,6 @@
 from models import Users
 from db import db
-from Services.files import insertImage
+from Services.files import insertUserImage
 
 
 def validateUserByEmail(email, password):
@@ -88,7 +88,7 @@ def updateUserData(userData):
         user.mobile = user.mobile if userData['mobile'] is None else userData['mobile']
         # if saveImage is true we don't need to update the image
         if userData['saveImage'] == 'true':
-            url = insertImage(userData['image'])
+            url = insertUserImage(userData['image'], user.id)
             if url:
                 user.profilePicture = url
             else:
