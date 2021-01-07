@@ -166,5 +166,4 @@ def getPropertyDetailsByQuery(query):
 
 def getPropertiesDetailsByTypeId(typeId):
     properties = Properties.query.filter_by(type_id=typeId).all()
-    print(properties)
     return [property.serialize for property in properties]
