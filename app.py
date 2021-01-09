@@ -6,11 +6,11 @@ from models import db
 app = Flask("MyEstate", static_url_path='/static', static_folder='static')
 
 # Configuring Connection String
-# app.config[
-#     'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://cs6lt3l6dc3g62o6:wsjgr00mmdqsno43@l0ebsc9jituxzmts.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/n7cu9urc46v84xao'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@localhost:3306/myestate'
+app.config[
+    'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://hhwkd7s7t69nfydq:y2wojvhvzu1f3e3z@l0ebsc9jituxzmts.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/uvx1dgkqm0ohu0hm'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 # Cross Origin Resource Sharing
 CORS(app, resources={r"/*": {"origins": "*"}})

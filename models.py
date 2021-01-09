@@ -1,7 +1,7 @@
 from db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
-propertyTypeData = ['Land', 'Appartment', 'Ville', 'House']
+propertyTypeData = ['Land', 'Appartment', 'Villa', 'House']
 
 
 # Model Users is parent to the Property Model
