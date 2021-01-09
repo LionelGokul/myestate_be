@@ -47,6 +47,17 @@ class PropertyType(db.Model):
     properties = db.relationship("Properties", backref="propertytype", uselist=False)
 
 
+class Feedback(db.Model):
+    __tablename__ = "feedback"
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    feedback = db.Column(db.String(1000), nullable=False)
+    createdOn = db.Column(db.DateTime, server_default=db.func.current_timestamp(),
+                          server_onupdate=db.func.current_timestamp())
+    createdBy = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
+    isActive = db.Column(db.Boolean, default=True)
+    isDeleted = db.Column(db.Boolean, default=False)
+
+
 @db.event.listens_for(PropertyType.__table__, "after_create")
 def insertPropertyTypeValues(*args, **kwargs):
     for data in propertyTypeData:
