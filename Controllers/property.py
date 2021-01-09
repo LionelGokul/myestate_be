@@ -1,6 +1,7 @@
 from flask import request
 import json
-from Repositories.propertyRepository import insertPropertyData, getPropertiesByUserId, getPropertyDetailsById, updatePropertyData, getCreatedBy,getPropertyDetailsByQuery
+from Repositories.propertyRepository import insertPropertyData, getPropertiesByUserId, getPropertyDetailsById, \
+    updatePropertyData, getCreatedBy, getPropertyDetailsByQuery
 
 
 def insertProperty():
@@ -56,7 +57,7 @@ def getPropertyDetails(id):
 def getProperties(query):
     try:
         print(query)
-        res=getPropertyDetailsByQuery(query)
-        return json.dumps(res),200
+        res = getPropertyDetailsByQuery(query)
+        return json.dumps(res), 200
     except Exception as e:
         return json.dumps(e), 500
