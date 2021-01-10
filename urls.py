@@ -1,7 +1,7 @@
 from Controllers.Home import index
 from Controllers.User import validateUser, createUser, updateUser
 from Controllers.property import insertProperty, getPropertiesCreatedByUser, getPropertyDetails, \
-    updateProperty, getProperties, getPropertiesByType
+    updateProperty, getProperties, getPropertiesByType, featuredProperties
 from Controllers.Wishlist import addToWishlist, removeFromWishlist, getWishlistByUserId
 from Controllers.Feedback import feedback
 
@@ -21,3 +21,4 @@ def configure_URL(app):
     app.add_url_rule('/search/<query>', view_func=getProperties, methods=['GET'])
     app.add_url_rule('/feedback', view_func=feedback, methods=['POST'])
     app.add_url_rule('/properties/<type>', view_func=getPropertiesByType, methods=['GET'])
+    app.add_url_rule('/featured', view_func=featuredProperties, methods=['GET'])
