@@ -1,5 +1,4 @@
 from flask import request
-from flask_cors import cross_origin
 import json
 from Repositories.propertyRepository import insertPropertyData, getPropertiesByUserId, getPropertyDetailsById, \
     updatePropertyData, \
@@ -83,7 +82,6 @@ def getPropertiesByType(type):
         return json.dumps(e), 500
 
 
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def featuredProperties():
     try:
         properties = getFeaturedProperties()

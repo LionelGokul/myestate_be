@@ -7,7 +7,7 @@ app = Flask("MyEstate", static_url_path='/static', static_folder='static')
 
 # Configuring Connection String
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://hhwkd7s7t69nfydq:y2wojvhvzu1f3e3z@l0ebsc9jituxzmts.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/uvx1dgkqm0ohu0hm'
+    'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://kpn9zmuqp42zsn62:uqs0ytg455a2pz40@j21q532mu148i8ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/mh3o48ev1avf0yed'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['CORS_HEADERS'] = 'Content-Type'
 
