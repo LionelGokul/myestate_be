@@ -2,7 +2,7 @@ from flask import request
 import json
 from Repositories.propertyRepository import insertPropertyData, getPropertiesByUserId, getPropertyDetailsById, \
     updatePropertyData, \
-    getCreatedBy, getPropertyDetailsByQuery, getPropertiesDetailsByTypeId
+    getCreatedBy, getPropertyDetailsByQuery, getPropertiesDetailsByTypeId, getFeaturedProperties
 
 
 def insertProperty():
@@ -72,10 +72,19 @@ def getPropertiesByType(type):
             typeId = 2
         elif type == "Villa":
             typeId = 3
-        else:
+        elif type == "House":
             typeId = 4
-
+        else:
+            return json.dumps({'message': 'Property type not found'}), 404
         res = getPropertiesDetailsByTypeId(typeId)
         return json.dumps(res), 200
+    except Exception as e:
+        return json.dumps(e), 500
+
+
+def featuredProperties():
+    try:
+        properties = getFeaturedProperties()
+        return json.dumps(properties), 200
     except Exception as e:
         return json.dumps(e), 500

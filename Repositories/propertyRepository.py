@@ -97,11 +97,12 @@ def updatePropertyData(id, propertyDetails, propertyAmenities, propertyRooms, pr
              type_id=propertyDetails['type']))
 
     if property.rentPreferences is not None:
-        PropertyRentPreferences.query.filter_by(id=property.rentPreferences, isActive=True, isDeleted=False).update(dict(
-            tenantType=propertyRent['tenantType'],
-            work=propertyRent['tenantWork'],
-            foodType=propertyRent['tenantFoodType'],
-            minimumStay=propertyRent['tenantStay'],))
+        PropertyRentPreferences.query.filter_by(id=property.rentPreferences, isActive=True, isDeleted=False).update(
+            dict(
+                tenantType=propertyRent['tenantType'],
+                work=propertyRent['tenantWork'],
+                foodType=propertyRent['tenantFoodType'],
+                minimumStay=propertyRent['tenantStay'], ))
 
     if propertyDetails['type'] != 1:
         PropertyAmenities.query.filter_by(id=property.amenities, isActive=True, isDeleted=False).update(
@@ -142,7 +143,8 @@ def updatePropertyData(id, propertyDetails, propertyAmenities, propertyRooms, pr
             return
     for removedFile in removedFiles:
         PropertyImages.query.filter_by(id=removedFile['id']).update(dict(isActive=False, isDeleted=True))
-        removePropertyImage(PropertyImages.query.filter_by(id=removedFile['id']).first().url.split('/')[-1], property.id)
+        removePropertyImage(PropertyImages.query.filter_by(id=removedFile['id']).first().url.split('/')[-1],
+                            property.id)
         db.session.flush()
     db.session.commit()
     return True
@@ -150,6 +152,11 @@ def updatePropertyData(id, propertyDetails, propertyAmenities, propertyRooms, pr
 
 def getPropertiesByUserId(userId):
     properties = Properties.query.filter_by(createdBy=userId).all()
+    return [property.serialize for property in properties]
+
+
+def getFeaturedProperties():
+    properties = Properties.query.limit(8)
     return [property.serialize for property in properties]
 
 
@@ -161,9 +168,13 @@ def getPropertyDetailsById(id):
 def getCreatedBy(propertyId):
     return Properties.query.filter_by(id=propertyId, isActive=True, isDeleted=False).first().createdBy
 
+
 def getPropertyDetailsByQuery(query):
-    properties = Properties.query.filter((Properties.city.ilike(f"{query}%")) |(Properties.pincode.ilike(f"{query}%")) | (Properties.locality.ilike(f"{query}%")) )
+    properties = Properties.query.filter(
+        (Properties.name.ilike(f"{query}%") | Properties.city.ilike(f"{query}%")) | (Properties.pincode.ilike(f"{query}%")) | (
+            Properties.locality.ilike(f"{query}%")))
     return [property.serialize for property in properties]
+
 
 def getPropertiesDetailsByTypeId(typeId):
     properties = Properties.query.filter_by(type_id=typeId).all()
