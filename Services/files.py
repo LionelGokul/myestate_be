@@ -7,8 +7,8 @@ API_URL = 'http://127.0.0.1:5000/'
 S3_PROP_IMAGES_URL = 'https://my-estate.s3-ap-southeast-1.amazonaws.com/images/properties/'
 S3_USER_IMAGES_URL = 'https://my-estate.s3-ap-southeast-1.amazonaws.com/images/users/'
 s3_client = boto3.client('s3',
-                         aws_access_key_id='AKIAI65DIV5RWERXPVLA',
-                         aws_secret_access_key='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',
+                         aws_access_key_id='AKIA2LMRDKXB43T7YV55',
+                         aws_secret_access_key='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',
                          region_name='us-east-2'
                          )
 
